@@ -1,2 +1,12 @@
-runtime: python311
-entrypoint: gunicorn -b :$PORT main:app
+runtime: python311  # Python version
+entrypoint: gunicorn -b :$PORT app:app  # Replace "app:app" with your Flask app module
+
+# Optional: additional configuration
+instance_class: F2  # Adjust based on the instance size you need
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 1
+  max_instances: 5
+
+env_variables:
+  FLASK_ENV: production
