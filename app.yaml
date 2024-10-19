@@ -1,5 +1,5 @@
 runtime: python311  # Python version
-entrypoint: gunicorn -b :$PORT main:app  # Replace "app:app" with your Flask app module
+entrypoint: gunicorn -b :$PORT app:app  # Replace "app:app" with your Flask app module
 
 # Optional: additional configuration
 instance_class: F2  # Adjust based on the instance size you need
