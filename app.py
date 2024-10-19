@@ -7,7 +7,7 @@ import threading
 app = Flask(__name__)
 
 # Configure upload folder
-UPLOAD_FOLDER = 'scraped_data'
+UPLOAD_FOLDER = '/tmp/scraped_data'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Ensure the upload folder exists
@@ -57,6 +57,10 @@ def result():
             return "Scraping failed. Please try again."
     return "Scraping still in progress or hasn't started."
 
+@app.route('/_ah/health')
+def health_check():
+    return 'OK', 200
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=False)
