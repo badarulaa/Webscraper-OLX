@@ -57,6 +57,6 @@ def result():
             return "Scraping failed. Please try again."
     return "Scraping still in progress or hasn't started."
 
-if __name__ == '__app__':
+if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
